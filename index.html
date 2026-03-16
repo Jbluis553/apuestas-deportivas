@@ -2,35 +2,29 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportBet Center | GitHub</title>
+    <title>Novibet Clone | Jose Luis</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>🏆 SPORTBET CENTER</h1>
+        <h1>NOVIBET <span style="color:#00ff73">CLONE</span></h1>
+        <div id="user-bar">SALDO: $<span id="saldo-display">1000.00</span></div>
         <nav>
-            <button onclick="filtrar('soccer_mexico_ligamx')">🇲🇽 LIGA MX</button>
-            <button onclick="filtrar('basketball_nba')">🏀 NBA</button>
-            <button onclick="filtrar('soccer_uefa_champs_league')">🇪🇺 CHAMPIONS</button>
+            <button onclick="filtrar('soccer_mexico_ligamx')">LIGA MX</button>
+            <button onclick="filtrar('basketball_nba')">NBA</button>
+            <button onclick="filtrar('soccer_uefa_champs_league')">CHAMPIONS</button>
         </nav>
     </header>
 
-    <main id="contenedor-apuestas">
-        <div class="mensaje-bienvenida">
-            <h3>Bienvenido, Jose Luis</h3>
-            <p>Selecciona una liga para ver los momios en vivo.</p>
-        </div>
-    </main>
+    <main id="contenedor-apuestas"></main>
 
     <div id="bet-slip">
-        <h3>Tu Boleto</h3>
-        <p id="bet-team">Selecciona un equipo</p>
-        <p>Momio: <span id="bet-odds">0</span></p>
-        <input type="number" id="monto" placeholder="Monto $ (ej. 100)" oninput="calcularGanancia()">
-        <p>Pago Potencial: <span id="total-win">$0.00</span></p>
-        <button class="btn-apostar" onclick="confirmarApuesta()">APRESTAR AHORA</button>
-        <button class="btn-cerrar" onclick="cerrarBoleto()">Cerrar</button>
+        <h4 style="margin:0">Boleto de Apuesta</h4>
+        <p><span id="bet-team"></span> (<span id="bet-odds"></span>)</p>
+        <input type="number" id="monto" placeholder="Cantidad a apostar" oninput="calcularGanancia()" style="width:100%; padding:10px; margin-bottom:10px;">
+        <p>Ganancia Potencial: <span id="total-win" style="color:#00ff73">$0.00</span></p>
+        <button class="btn-confirmar" onclick="confirmarApuesta()">Colocar Apuesta</button>
+        <button onclick="cerrarBoleto()" style="background:none; color:white; border:none; width:100%; margin-top:10px; cursor:pointer;">Cancelar</button>
     </div>
 
     <script src="script.js"></script>
