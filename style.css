@@ -1,0 +1,5 @@
+body { background: #1a1a1a; color: white; font-family: sans-serif; text-align: center; }
+header { background: #2e7d32; padding: 20px; }
+nav button { margin: 5px; padding: 10px; cursor: pointer; background: #ff9800; border: none; font-weight: bold; }
+.card { border: 1px solid #444; margin: 10px; padding: 15px; border-radius: 8px; display: inline-block; width: 300px; }
+.momio { color: #00e676; font-size: 1.2em; }
