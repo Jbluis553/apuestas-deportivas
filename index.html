@@ -2,22 +2,32 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis Apuestas - Liga MX & NBA</title>
+    <title>SportBet Center</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>🏆 SportBet Center</h1>
         <nav>
-            <button onclick="filtrar('soccer_mexico_ligamx')">Liga MX</button>
-            <button onclick="filtrar('basketball_nba')">NBA</button>
+            <button onclick="filtrar('soccer_mexico_ligamx')">🇲🇽 Liga MX</button>
+            <button onclick="filtrar('basketball_nba')">🏀 NBA</button>
+            <button onclick="filtrar('soccer_uefa_champs_league')">🇪🇺 Champions</button>
         </nav>
     </header>
 
     <main id="contenedor-apuestas">
-        <p>Cargando momios del día...</p>
+        <h3>Selecciona una liga para ver momios reales</h3>
     </main>
+
+    <div id="bet-slip">
+        <h3>Tu Apuesta</h3>
+        <p id="bet-team">Equipo</p>
+        <p>Momio: <span id="bet-odds">0</span></p>
+        <input type="number" id="monto" placeholder="Monto a apostar ($)" oninput="calcularGanancia()">
+        <p>Pago Potencial: <span id="total-win">$0.00</span></p>
+        <button onclick="alert('¡Apuesta colocada con éxito!')" style="width:100%; background:#00e676; border:none; padding:10px; font-weight:bold; cursor:pointer;">APRESTAR AHORA</button>
+        <button onclick="cerrarBoleto()" style="width:100%; background:transparent; color:white; border:none; margin-top:5px; cursor:pointer;">Cancelar</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
