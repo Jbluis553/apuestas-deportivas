@@ -2,29 +2,70 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novibet Clone | Jose Luis</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>NOVIBET <span style="color:#00ff73">CLONE</span></h1>
-        <div id="user-bar">SALDO: $<span id="saldo-display">1000.00</span></div>
-        <nav>
-            <button onclick="filtrar('soccer_mexico_ligamx')">LIGA MX</button>
-            <button onclick="filtrar('basketball_nba')">NBA</button>
-            <button onclick="filtrar('soccer_uefa_champs_league')">CHAMPIONS</button>
+        <div class="top-nav">
+            <h1>NOVIBET <span style="color:#00ff73">CLONE</span></h1>
+            <div id="saldo-box">
+                <small>SALDO DISPONIBLE</small>
+                <div id="saldo-monto">$<span id="saldo-display">1000.00</span></div>
+            </div>
+        </div>
+        <div class="action-bar">
+            <button onclick="abrirCajero('deposito')" class="btn-deposito">+ DEPOSITAR</button>
+            <button onclick="abrirCajero('retiro')" class="btn-retiro">RETIRAR</button>
+            <button onclick="mostrarPerfil()" class="btn-perfil">👤 MI PERFIL</button>
+        </div>
+        <nav class="ligas-nav">
+            <button onclick="filtrar('soccer_mexico_ligamx')">🇲🇽 LIGA MX</button>
+            <button onclick="filtrar('basketball_nba')">🏀 NBA</button>
+            <button onclick="filtrar('soccer_uefa_champs_league')">🇪🇺 CHAMPIONS</button>
         </nav>
     </header>
 
-    <main id="contenedor-apuestas"></main>
+    <main id="contenedor-apuestas">
+        <div class="welcome">
+            <h2>Bienvenido a la acción</h2>
+            <p>Selecciona un deporte para comenzar a ganar.</p>
+        </div>
+    </main>
 
-    <div id="bet-slip">
-        <h4 style="margin:0">Boleto de Apuesta</h4>
-        <p><span id="bet-team"></span> (<span id="bet-odds"></span>)</p>
-        <input type="number" id="monto" placeholder="Cantidad a apostar" oninput="calcularGanancia()" style="width:100%; padding:10px; margin-bottom:10px;">
-        <p>Ganancia Potencial: <span id="total-win" style="color:#00ff73">$0.00</span></p>
-        <button class="btn-confirmar" onclick="confirmarApuesta()">Colocar Apuesta</button>
-        <button onclick="cerrarBoleto()" style="background:none; color:white; border:none; width:100%; margin-top:10px; cursor:pointer;">Cancelar</button>
+    <div id="bet-slip" class="bottom-sheet">
+        <div class="sheet-header">
+            <h4>BOLETO DE APUESTA</h4>
+            <button onclick="cerrarBoleto()">X</button>
+        </div>
+        <div class="sheet-body">
+            <p><strong id="bet-team">Equipo</strong> <span id="bet-odds" class="odds-badge"></span></p>
+            <input type="number" id="monto" placeholder="Monto a apostar $" oninput="calcularGanancia()">
+            <div class="payout-box">
+                <span>PAGO POTENCIAL:</span>
+                <span id="total-win">$0.00</span>
+            </div>
+            <button class="btn-confirmar" onclick="confirmarApuesta()">CONFIRMAR APUESTA</button>
+        </div>
+    </div>
+
+    <div id="modal-cajero" class="modal">
+        <div class="modal-content">
+            <h3 id="cajero-titulo">Cajero</h3>
+            <input type="number" id="cajero-monto" placeholder="Monto $">
+            <button onclick="procesarTransaccion()" class="btn-confirmar">PROCESAR</button>
+            <button onclick="cerrarCajero()" class="btn-flat">CANCELAR</button>
+        </div>
+    </div>
+
+    <div id="modal-perfil" class="modal">
+        <div class="modal-content">
+            <h3>HISTORIAL DE MOVIMIENTOS</h3>
+            <div id="lista-transacciones"></div>
+            <button onclick="cerrarPerfil()" class="btn-confirmar">CERRAR</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
