@@ -1,18 +1,34 @@
-body { background: #121212; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding-bottom: 50px; }
-header { background: #1b5e20; padding: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-h1 { margin: 0; color: #fff; text-transform: uppercase; letter-spacing: 2px; }
-nav { margin-top: 15px; }
-nav button { background: #388e3c; color: white; border: none; padding: 10px 20px; margin: 5px; cursor: pointer; border-radius: 4px; font-weight: bold; transition: 0.3s; }
+body { background: #121212; color: #ffffff; font-family: 'Arial', sans-serif; margin: 0; text-align: center; }
+header { background: #1b5e20; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+h1 { font-size: 1.5rem; letter-spacing: 2px; }
+
+nav button { 
+    background: #2e7d32; color: white; border: none; padding: 10px 15px; 
+    margin: 5px; cursor: pointer; border-radius: 5px; font-weight: bold; 
+}
 nav button:hover { background: #4caf50; }
 
 #contenedor-apuestas { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; }
-.card { background: #1e1e1e; border: 1px solid #333; margin: 15px; padding: 20px; border-radius: 12px; width: 320px; transition: transform 0.2s; }
-.card:hover { transform: translateY(-5px); border-color: #4caf50; }
-.momio-btn { background: #333; color: #00e676; border: 1px solid #444; padding: 8px; margin: 5px; cursor: pointer; border-radius: 5px; width: 100%; display: flex; justify-content: space-between; font-weight: bold; }
-.momio-btn:hover { background: #444; border-color: #00e676; }
 
-/* Estilos del Boleto */
-#bet-slip { position: fixed; bottom: 20px; right: 20px; background: #2c2c2c; padding: 20px; border-radius: 10px; border: 2px solid #00e676; width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); display: none; }
-#bet-slip h3 { margin-top: 0; color: #00e676; }
-input { width: 90%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; }
-#total-win { font-size: 1.2em; color: #00e676; font-weight: bold; }
+.card { 
+    background: #1e1e1e; border: 1px solid #333; margin: 10px; 
+    padding: 15px; border-radius: 10px; width: 90%; max-width: 350px; 
+}
+.card h4 { color: #ff9800; margin-bottom: 15px; }
+
+.momio-btn { 
+    background: #262626; color: #00e676; border: 1px solid #444; 
+    padding: 12px; margin: 5px 0; cursor: pointer; border-radius: 6px; 
+    width: 100%; display: flex; justify-content: space-between; font-weight: bold;
+}
+.momio-btn:hover { background: #333; border-color: #00e676; }
+
+/* Boleto */
+#bet-slip { 
+    position: fixed; bottom: 0; left: 0; right: 0; background: #2c2c2c; 
+    padding: 20px; border-top: 3px solid #00e676; display: none; z-index: 100;
+}
+input { width: 80%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; font-size: 1rem; }
+#total-win { color: #00e676; font-size: 1.3rem; font-weight: bold; }
+.btn-apostar { background: #00e676; color: black; border: none; padding: 12px; width: 100%; font-weight: bold; cursor: pointer; }
+.btn-cerrar { background: transparent; color: #aaa; border: none; margin-top: 10px; cursor: pointer; }
