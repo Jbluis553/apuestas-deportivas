@@ -5,12 +5,18 @@ const betSlip = document.getElementById('bet-slip');
 let momioSeleccionado = 0;
 
 async function filtrar(sportKey) {
-    contenedor.innerHTML = "<p>Cargando momios reales...</p>";
+    contenedor.innerHTML = "<p>Cargando momios reales (usando puente de seguridad)...</p>";
+    
+    // Usamos un proxy para evitar el error de bloqueo del navegador
+    const proxy = 'https://api.allorigins.win/get?url=';
+    const apiUrl = `https://api.the-odds-api.com/v4/sports/${sportKey}/odds/?apiKey=${apiKey}&regions=us&markets=h2h&oddsFormat=american`;
     
     try {
-        const url = `https://api.the-odds-api.com/v4/sports/${sportKey}/odds/?apiKey=${apiKey}&regions=us&markets=h2h&oddsFormat=american`;
-        const respuesta = await fetch(url);
-        const eventos = await respuesta.json();
+        const respuesta = await fetch(proxy + encodeURIComponent(apiUrl));
+        const data = await respuesta.json();
+        
+        // El proxy devuelve la info dentro de data.contents
+        const eventos = JSON.parse(data.contents);
 
         if (!eventos || eventos.length === 0) {
             contenedor.innerHTML = "<p>No hay partidos disponibles para esta liga ahora.</p>";
@@ -39,7 +45,8 @@ async function filtrar(sportKey) {
             `;
         });
     } catch (error) {
-        contenedor.innerHTML = "<p>Error: Revisa tu conexión o el límite de tu API Key.</p>";
+        console.error(error);
+        contenedor.innerHTML = "<p>Error de conexión. Intenta de nuevo en un momento.</p>";
     }
 }
 
@@ -68,7 +75,7 @@ function calcularGanancia() {
 function confirmarApuesta() {
     const monto = document.getElementById('monto').value;
     if(monto > 0) {
-        alert("¡Apuesta confirmada! Suerte, Jose Luis.");
+        alert("¡Apuesta confirmada! Suerte.");
         cerrarBoleto();
     } else {
         alert("Por favor ingresa un monto.");
